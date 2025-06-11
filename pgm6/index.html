@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Password Strength Checker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+    #password { padding: 10px; font-size: 16px; }
+    #strength { font-weight: bold; margin-top: 10px; }
+    .weak { color: red; }
+    .medium { color: orange; }
+    .strong { color: green; }
+  </style>
+</head>
+<body>
+  <h2>Password Strength Checker</h2>
+  <input type="password" id="password" placeholder="Enter your password" />
+  <p id="strength"></p>
+  <script>
+    $(function() {
+      $("#password").on("input", function() {
+        var pwd = $(this).val(), s = $("#strength"), st = 0;
+        if (!pwd) return s.text("").removeClass();
+        if (pwd.length >= 6) st++;
+        if (/[A-Z]/.test(pwd)) st++;
+        if (/[a-z]/.test(pwd)) st++;
+        if (/[0-9]/.test(pwd)) st++;
+        if (/[^A-Za-z0-9]/.test(pwd)) st++;
+        if (st <= 2) s.text("Weak").attr("class", "weak");
+        else if (st <= 4) s.text("Medium").attr("class", "medium");
+        else s.text("Strong").attr("class", "strong");
+      });
+    });
+  </script>
+</body>
+</html>

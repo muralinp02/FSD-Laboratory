@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Star Rating System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+.stars { font-size: 30px; color: gray; cursor: pointer; }
+.star { padding: 5px; }
+.selected, .highlight { color: gold; }
+</style>
+</head>
+<body>
+<h2>Star Rating System</h2>
+<div class="stars">
+  <span class="star" data-rating="1">&#9733;</span>
+  <span class="star" data-rating="2">&#9733;</span>
+  <span class="star" data-rating="3">&#9733;</span>
+  <span class="star" data-rating="4">&#9733;</span>
+  <span class="star" data-rating="5">&#9733;</span>
+</div>
+<p id="ratingValue">Rating: 0</p>
+<script>
+$(function() {
+  let selected = 0;
+  $(".star").hover(
+    function() {
+      let r = $(this).data("rating");
+      $(".star").each(function() {
+        $(this).toggleClass("highlight", $(this).data("rating") <= r);
+      });
+    },
+    function() { $(".star").removeClass("highlight"); }
+  );
+  $(".star").click(function() {
+    selected = $(this).data("rating");
+    $("#ratingValue").text("Rating: " + selected);
+    $(".star").each(function() {
+      $(this).toggleClass("selected", $(this).data("rating") <= selected);
+    });
+  });
+});
+</script>
+</body>
+</html>

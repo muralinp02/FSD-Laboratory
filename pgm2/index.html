@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Simple Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>My Simple Website</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>Welcome to My Website</h2>
+        <p>This is a basic website using HTML, CSS, and JavaScript.</p>
+        <button onclick="alert('Hello! Welcome to my website.')">Click Me</button>
+    </section>
+
+    <section id="about">
+        <h2>About This Website</h2>
+        <p>This webpage demonstrates a simple responsive design using basic web technologies.</p>
+        <img src="Picture/chatbot.png" alt="Sample Image" width="300"/>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form onsubmit="return submitForm()">
+            <input type="text" id="name" placeholder="Name" required />
+            <input type="email" id="email" placeholder="Email" required />
+            <button type="submit">Submit</button>
+        </form>
+        <p id="message"></p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
